@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 
 <h2>書籍詳細</h2>
 
@@ -8,9 +9,22 @@
 <p>出版社：<%= @book.publish %></p>
 <p>刊行日：<%= @book.publish_date %></p>
 
-
 <hr>
 
 <%= link_to "一覧に戻る", books_path %> <br>
 <%= link_to "編集", edit_book_path(@book) %> <br>
 <%= link_to "削除", book_path(@book), method: :delete %>
+
+<h3>レビュー一覧</h3>
+
+<% @book.reviews.each do |review| %>
+<li><%= review.body %></li>
+<% end %>
+
+<h3>レビュー投稿</h3>
+
+<h6>id = <%= @book.id %></h6>
+<br>
+
+<%= render partial: "new_review", locals: {review: Review.new(book_id: @book.id) } %>
+
