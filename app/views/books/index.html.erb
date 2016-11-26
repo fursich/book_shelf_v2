@@ -3,8 +3,15 @@
 <ul>
     <% @books.each do |book| %>
     <li>
-        <%= link_to book.name, book_path(book) %>
+        <%= book.name %>
+        <%= link_to "詳細", book_path(book) %>
     </li>
     <% end %>
+
+    <li>
+        <a href="books/new">新規追加</a>
+    </li>
     
 </ul>
+
+
